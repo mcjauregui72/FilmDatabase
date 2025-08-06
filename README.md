@@ -28,7 +28,7 @@ This project focuses on the Extract, Transform, and Load processes rather than d
 The workflow diagram below gives a sequential overview of the steps taken to load and transform the data that would eventually become the .csv files (in red) used to create PostgreSQL tables.   
 
 
-![Extract_transform_workflow_diagram](https://github.com/mcjauregui72/FilmDatabase/assets/NEW-ID)
+![Extract_transform_workflow_diagram](graphics/Extract_transform_workflow_diagram.png)
 
 
 ## Files
