@@ -1,4 +1,4 @@
-# Film Recommendation Engine & ETL Project
+# Film Recommendation Engine Project Demonstrating Extract, Transform, and Load
 
 >SQL Python Connector is used to allow users to query from the SQL database in Python.
 >
@@ -48,7 +48,10 @@ The workflow diagram below gives a sequential overview of the steps taken to loa
 ## Extract Phase Goals  
 
 ### Some Ethical Considerations When Finding Data
-Originally, the intent was to connect to a movie database API in to collect real-time data. However, the OMDB film API's free API key only allows users to perform 1,000 queries per day. Getting to a sizable data set would require running thousands of queries, because each film search is a single call. Options included running the extraction code over several days or create multiple accounts to collect a sufficient amount of data. Both options were impractical and possibly an abuse of a free open API key. Instead, a Kaggle dataset of 5,000 films was identified and retrieved from a TMDB movie API, already loaded into a CSV file format. Notably, the creator of the Kaggle data source originally used IMDB's API but had switched to TMDB's API instead as publishing the dataset using IMDB had been found to violate IMDB's usage policy. These issues highlight the responsibility of a data engineer to follow policies of an API's publisher.
+Originally, the intent was to connect to a movie database API in to collect real-time data. However, the OMDB film API's free API key only allows users to perform 1,000 queries per day. Getting to a sizable data set would require running thousands of queries, because each film search is a single call. Options included running the extraction code over several days or creating multiple accounts to collect a sufficient amount of data. Both options were impractical and possibly an abuse of a free open API key.   
+  
+Instead, a Kaggle dataset of 5,000 films was identified and retrieved from a TMDB movie API, already loaded into a CSV file format. Notably, the creator of the Kaggle data source originally used IMDB's API but had switched to TMDB's API instead as publishing the dataset using IMDB had been found to violate IMDB's usage policy. These issues highlight the responsibility of a data engineer to follow policies of an API's publisher.
+
 
 ### Extraction Steps
 The goal of the extract phase was to get familiar with the content and structure of the data, and identify which fields would need to be create to produce database tables needed for the recommendation engine.  
