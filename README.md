@@ -1,6 +1,6 @@
-# Film Recommendation Database & ETL Project
+# Film Recommendation Engine & ETL Project
 
->This project uses SQL Python Connector to allow users to query from the SQL database in Python.
+>SQL Python Connector is used to allow users to query from the SQL database in Python.
 >
 >Python libraries not already present can be loaded via GitBash. Load required libraries and modules by running ‘pip install -r requirements.txt’
 >
