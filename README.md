@@ -110,21 +110,21 @@ We next created separate lists for ‘actor_id’ and ‘actor_name’ and creat
 
 ![readme11](graphics/readme11.png)
 
+![readme12](graphics/readme12.png)
 
-![readme12](https://github.com/mcjauregui/project3_group4_moviedatabase/assets/151464511/275a08be-8ba3-4a58-bc96-0108aff6d023)
 
 In creating a ‘credits_actor_df’ data frame by dropping actor ‘name’ from ‘credits_actor_name’, we produced the data needed to ultimately produce our future ‘credit_actor’ table needed to link our ‘actor’ and ‘movies’ table in the SQL database. We exported the ‘credits_actor_df’ data frame as a .csv for later use.   
 
 
-![readme13](https://github.com/mcjauregui/project3_group4_moviedatabase/assets/151464511/ea6e18c4-6802-4381-9392-d59b30694858)
+![readme13](graphics/readme13.png)
 
 In order to create an ‘actor’ dataframe, .csv file, and database table of ‘actor_id’ and ‘actor_name’, we defined ‘ids_cast’ as a set to hold unique pairs of ‘actor_id” and actor ’name’.  Next, we iterated through the ‘credits_actor_name’ data frame using the iterrows() method. This allowed us to extract‘actor_id’ and actor ‘name’ from the rows and place them in the ‘ids_cast’ set. By using the itertools.islice() method on the ‘ids_cast’ set, we could print out the first 10 ‘actor_id’ and ‘actor_name’ pairs to the terminal.   
 
 
-![readme14](https://github.com/mcjauregui/project3_group4_moviedatabase/assets/151464511/08d1636b-303e-4dc8-9d41-2d7828618c0f)
+![readme14](graphics/readme14.png)
 
 
-![readme15](https://github.com/mcjauregui/project3_group4_moviedatabase/assets/151464511/99e98f49-8f3e-4954-9122-52404dca3b38)
+![readme15](graphics/readme15.png)
 
 To identify each movie’s director, we had to first extract the ‘crew’ and the ‘movie_id’ information from the credits data file.  We saved this extracted data in a data frame called ‘movie_crew’. Next, we used the .iterrows(); method to iterate through ‘movie_crew’ and load the data found in the ‘crew’ row as a Python list to ‘data_list’. Similarly, we used .iterrows() to isolate the ‘movie_id’ value from the ‘movie_id’ row.   
 
@@ -133,43 +133,47 @@ Within the ‘data_list’ we had to identify crew_members that had a ‘job’ 
 Creating a new dataframe called ‘movie_director’ allowed us to associate a list of ‘movie_id’s with their related ‘director_id’, allowing for the possibility that multiple directors may be credited per movie. We then concatenated our empty dataframe ‘movieid_directorid_df with ‘movie_director’ and converted movie and director id fields to integers with .astype(). Finally, we exported ‘movieid_directorid_df’ to a .csv file for later use in SQL database table creation.   
 
 
-![readme16](https://github.com/mcjauregui/project3_group4_moviedatabase/assets/151464511/da9a25e1-d307-4ec6-b61f-b9f1f5db0a95)
+![readme16](graphics/readme16.png)
 
 
-![readme17](https://github.com/mcjauregui/project3_group4_moviedatabase/assets/151464511/769ed562-84e5-4bea-b937-842519d0ac79)
+![readme17](graphics/readme17.png)
+
 
 To link our ‘directors’ table to our ‘movies’ table in the eventual SQL database, we needed to build a table containing ‘director_id’ and ‘movie_id’. Again, we looked at the credits datafile for ‘movie_id’ and ‘crew’. Like in the previous step, we used iterrows(): to isolate ‘crew’ and ‘movie_id’ and identify instances where ‘job’ equals “Director” using .get(), so that we could append all (director) ‘id’ values to an empty list called ‘director_ids’.  We then used this list to create the ‘movie_director’ data frame to pair ‘movie_id’s with associated ‘director_id’s.    
 
 Again, we concatenated an initialized data frame ‘movieid_directorid_df’ with the ‘movie_director’ data frame before converting ‘movie_id’s and ‘director_id’s to integers with astype(int). Finally, we exported ‘movieid_directorid_df’ to a .csv file.   
 
 
-![readme18](https://github.com/mcjauregui/project3_group4_moviedatabase/assets/151464511/0e305afa-b949-43c9-a27a-93385b30962d)
+![readme18](graphics/readme18.png)
 
 To allow users of our movie recommendation engine to search for films based on keywords, we decided to include in our SQL database a ‘keywords’ field from the ‘en_movies’ dataset we’d created from the original ‘movies’ and ‘crew’ data files. 
 
 The for loop-json.loads() process once again helped us isolate (keyword) ‘id’ and (keyword) ‘name’ from the source data and update them to the ‘ids_keyword’ set we defined. Again, we exported the resulting data frame, ‘keywords_df’ to a .csv file for import into our SQL database. 
 
 
-![readme19](https://github.com/JacqueLeeMeyer/project3_group4_moviedatabase/assets/151464511/871106ab-fe0d-474f-aace-56e2dd8b0a42)
+![readme19](graphics/readme19.png)
 
 
-![readme20](https://github.com/JacqueLeeMeyer/project3_group4_moviedatabase/assets/151464511/0bcf5554-4719-4532-a87d-81c7447c3381)
+![readme20](graphics/readme20.png)
+
 
 With a query-by-keywords function for our movie recommendation engine, we needed a data frame, .csv file, database table that linked keywords with movie ids. We created this link using a similar process we used in creating the other linking data frames/.csv files/tables. The script is shown below.
 
 
-![readme21](https://github.com/JacqueLeeMeyer/project3_group4_moviedatabase/assets/151464511/59c94588-a823-4986-8f09-0cc935383d91)
+![readme21](graphics/readme21.png)
 
 
-![readme22](https://github.com/JacqueLeeMeyer/project3_group4_moviedatabase/assets/151464511/60cbe85a-0592-43de-aa25-6a1d7a5e88dd)
+![readme22](graphics/readme22.png)
+
 
 The final dataframe-to .csv-to table we needed to create is for ‘movies’. First, we selected the columns we wanted from our ‘en_movies’ data set and assigned them to a dictionary, ‘data’. From the ‘data’ we made a data frame. Within that data frame, we converted all ‘movie_id’ values from string to integer type using .astype(int) and converted ‘release_date’ values from string to datetime type using the pd.to_datetime method. We also assigned null values to the ‘tagline’ and ‘release_date’ columns that were missing data. Finally, we exported ‘movies_df’ to a .csv file for further use. 
 
 
-![readme23](https://github.com/JacqueLeeMeyer/project3_group4_moviedatabase/assets/151464511/990a9ec7-1f68-4c36-a50c-e782518ed8bc)
+![readme23](graphics/readme23.png)
 
 
-![readme24](https://github.com/JacqueLeeMeyer/project3_group4_moviedatabase/assets/151464511/343bf256-4bc3-462e-bce3-11a479679bd2)
+![readme24](graphics/readme24.png)
+
 
 ## Load Phase Goals
 
@@ -289,7 +293,8 @@ Import Files into Tables, in this order:
 9. movieids_kw 
 
 
-![readme25](https://github.com/JacqueLeeMeyer/project3_group4_moviedatabase/assets/151464511/aa70fb80-ac1a-4315-961a-2b0a8016f47f)
+![readme25](graphics/readme25.png)
+
 
 ## Running the movie recommendation engine
 Steps to interact with the movie recommendation engine:
@@ -299,9 +304,9 @@ Steps to interact with the movie recommendation engine:
 4. Run the Actor, Genre, Director, Keyword, and Keyword (LIKE) blocks one by one.
    
 
-![readme26](https://github.com/JacqueLeeMeyer/project3_group4_moviedatabase/assets/151464511/0781bdd7-1b34-4054-8ab9-79b80399c71b)
+![readme26](graphics/readme26.png)
 
-![readme27](https://github.com/JacqueLeeMeyer/project3_group4_moviedatabase/assets/151464511/b6c69828-b4ef-49f7-aad5-677018d78c7e)
+![readme27](graphics/readme27.png)
 
 
 Below is a short video showing the finished Movie Recommendation Engine we created:
