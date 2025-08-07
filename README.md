@@ -308,7 +308,7 @@ Steps to interact with the movie recommendation engine:
 
 Below is a short video showing the finished Movie Recommendation Engine we created:
 
-https://github.com/JacqueLeeMeyer/project3_group4_moviedatabase/assets/149394665/67a8c342-e58a-4e37-a7d4-d24aa8d6b0ae
+https://github.com/mcjauregui72/FilmDatabase/User_Input_Demo.mp4
 
 ## Future Improvements
 
