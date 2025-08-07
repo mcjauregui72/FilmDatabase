@@ -83,7 +83,7 @@ The goal of the transform phase was to parse the imported data in ways that woul
 The first data frame created was the ‘genres_df’ data frame. First, ‘ids_names’ were defined as an empty set for the genre ids and names found in The Movie Database. This set liwas filled by looping through the ‘genres’ column of the ‘en_movies’ data frame (English-language films), and isolating ‘id’ and ‘name’ from each row. The json.loads(row) method was used to parse the JSON string of ’id’ and ‘name’ data into a Python dictionary. This afforded access to the data as key-value pairs, with ‘id’ and ‘name’ containing the film genre id and film genre name. Next IDs were converted from strings to integers.
 
 Adding in the emojis for each ‘genre’ value required defining a dictionary of emojis, ‘emoji_dict’.
-From the items in ‘emoji_dict’, an ‘emoji_df’ dataframe was created to also included the genres’ ‘alias’. By doing a left merge on ‘emoji_genres’ and ‘emoji_df’ on the column ‘genre’, we populated the ‘emoji_genres’ dataframe. list comprehension was performed to apply the emoji.emojize() function to each emoji alias value and generate the emoji character from the alias language. Finally, the ‘emoji_genres’ dataframe was exported as a .csv file called 'emoji_genres.csv'
+From the items in ‘emoji_dict’, an ‘emoji_df’ dataframe was created to also included the genres’ ‘alias’. A left merge on ‘emoji_genres’ and ‘emoji_df’ on the column ‘genre allowed for populating the ‘emoji_genres’ dataframe. isLt comprehension was performed to apply the emoji.emojize() function to each emoji alias value and generate the emoji character from the alias language. Finally, the ‘emoji_genres’ dataframe was exported as a .csv file called 'emoji_genres.csv'
 
 ![readme05](graphics/readme05.png)
 
@@ -97,15 +97,14 @@ From the items in ‘emoji_dict’, an ‘emoji_df’ dataframe was created to a
 
 To create a data frame from the .csv file for the ‘actors’, consideration of characters (actors) were restricted to only the first five listed per film. The ‘credits’ data frame was filtered for the first five cast members present per movie within the ‘cast’ field.  Along with each uniquely-identified movie_id, each ‘cast’ dictionary (‘cast_id’ and ‘character’) embedded within the ‘cast’ field of the credits dataframe was saved. The result was a data frame containing five instances of the movie_id, one for each of the first five cast members credited in the film. 
 
-***Stopped editing here***
+The example below shows a test for the first five actor ids and names associated with the movie Avatar, the first film in the ‘credits’ dataframe. The subsequent screenshots illustrate how thi process was performed on the entire dataset.   
 
-The example below shows a test for the first five actor ids and names associated with the movie Avatar, the first film in the ‘credits’ dataframe. The subsequent screenshots illustrate how we performed this process on the entire dataset.   
+The itterows method in pandas was used to iterate over the rows of the ‘cast’ data frame. The purpose was to split out the actor names from each movie title into a list. A similar process isolated the ‘movie_id’ values. An empty set and empty list were initialized to capture the unique actor ids (as any actor could appear multiple times in the data set for being in multiple movies).   
 
-We used the itterows method in pandas to iterate over the rows of the ‘cast’ data frame. We did this to split out the actor names from each movie title into a list. We used a similar process to isolate the ‘movie_id’ values. In order to capture the unique actor ids (as any actor could appear multiple times in the data set for being in multiple movies) we initialized an empty set and an empty list.   
+A for loop and and several if statements iterated through the cast data to get only one instance of each actor name and actor id appearing in the data set. The loop was defined to stop working once the number of unique actors per film reached 5.    
 
-By using a for loop and and several if statements, we iterated through the cast data to get only one instance of each actor name and actor id that appeared in the data set. We instructed the loop to stop working once our  number of unique actors per film reached 5.    
+Separate lists were created for ‘actor_id’ and ‘actor_name.’ The ‘five_df’ data frame was built to hold ‘movie_id’, ‘actor_id’, and ‘actor_name.’ A new data frame called 'credits_actors_name' was created by appending the five_df dataframe to the credits_actor_name, which contains all actor-related data for all films in the datasets. 'actor_id' wass transformed from string to integer. 
 
-We next created separate lists for ‘actor_id’ and ‘actor_name’ and created the ‘five_df’ data frame to hold ‘movie_id’, ‘actor_id’, and ‘actor_name’. Then we concatenated the data frame to contain the ‘actor_id’ as transformed from string to integer, the ‘movie_id’, and the actor ‘name’ as a new data frame called ‘credits_actor_name’.  
 
 ![readme10](graphics/readme10.png)
 
@@ -114,12 +113,12 @@ We next created separate lists for ‘actor_id’ and ‘actor_name’ and creat
 ![readme12](graphics/readme12.png)
 
 
-In creating a ‘credits_actor_df’ data frame by dropping actor ‘name’ from ‘credits_actor_name’, we produced the data needed to ultimately produce our future ‘credit_actor’ table needed to link our ‘actor’ and ‘movies’ table in the SQL database. We exported the ‘credits_actor_df’ data frame as a .csv for later use.   
+Creating the ‘credits_actor_df’ data frame by dropping actor ‘name’ from ‘credits_actor_name’ produced the data needed to create the future ‘credit_actor’ table needed to link ‘actor’ and ‘movies’ tables in the SQL database. The date in ‘credits_actor_df’ was exported as a .csv for later use.   
 
 
 ![readme13](graphics/readme13.png)
 
-In order to create an ‘actor’ dataframe, .csv file, and database table of ‘actor_id’ and ‘actor_name’, we defined ‘ids_cast’ as a set to hold unique pairs of ‘actor_id” and actor ’name’.  Next, we iterated through the ‘credits_actor_name’ data frame using the iterrows() method. This allowed us to extract‘actor_id’ and actor ‘name’ from the rows and place them in the ‘ids_cast’ set. By using the itertools.islice() method on the ‘ids_cast’ set, we could print out the first 10 ‘actor_id’ and ‘actor_name’ pairs to the terminal.   
+To create an ‘actor’ dataframe, .csv file, and database table of ‘actor_id’ and ‘actor_name’, ‘ids_cast’ was defined as a set to hold unique pairs of ‘actor_id” and actor ’name’. Iterateing through the ‘credits_actor_name’ data frame using the iterrows() method enabled extraction of ‘actor_id’ and actor ‘name’ from the rows and placed them in the ‘ids_cast’ set. Using the itertools.islice() method on the ‘ids_cast’ set made it possible to print out the first 10 ‘actor_id’ and ‘actor_name’ pairs to the terminal.   
 
 
 ![readme14](graphics/readme14.png)
@@ -127,11 +126,12 @@ In order to create an ‘actor’ dataframe, .csv file, and database table of �
 
 ![readme15](graphics/readme15.png)
 
-To identify each movie’s director, we had to first extract the ‘crew’ and the ‘movie_id’ information from the credits data file.  We saved this extracted data in a data frame called ‘movie_crew’. Next, we used the .iterrows(); method to iterate through ‘movie_crew’ and load the data found in the ‘crew’ row as a Python list to ‘data_list’. Similarly, we used .iterrows() to isolate the ‘movie_id’ value from the ‘movie_id’ row.   
 
-Within the ‘data_list’ we had to identify crew_members that had a ‘job’ value equal to “Director.” We accomplished this by using a for loop on the ‘data_list’. Then we used .get() to append each Director’s ‘id’ to an empty list we called ‘director_ids’.   
+Identifing each film's director was a matter of first extracting the ‘crew’ and the ‘movie_id’ information from the credits data file and saving it in a data frame called ‘movie_crew’. Next, the .iterrows(); method iterated through ‘movie_crew’ and loaded the data found in the ‘crew’ row as a Python list to ‘data_list’. Similarly, .iterrows() was used to isolate the ‘movie_id’ value from the ‘movie_id’ row.   
 
-Creating a new dataframe called ‘movie_director’ allowed us to associate a list of ‘movie_id’s with their related ‘director_id’, allowing for the possibility that multiple directors may be credited per movie. We then concatenated our empty dataframe ‘movieid_directorid_df with ‘movie_director’ and converted movie and director id fields to integers with .astype(). Finally, we exported ‘movieid_directorid_df’ to a .csv file for later use in SQL database table creation.   
+Within the ‘data_list’, it was necessary to identify crew_members with a ‘job’ value equal to “Director.” This was accomplished by using a for loop on the ‘data_list’. .get() next appended each Director’s ‘id’ to an empty list called ‘director_ids’.   
+
+Creating a new dataframe called ‘movie_director’ allowed for associating a list of ‘movie_id’s their related ‘director_id’s. Because multiple directors can be credited per movie, it became necessary to concatenated empty dataframe ‘movieid_directorid_df with ‘movie_director’ and convert movie and director id fields to integers with .astype(). Finally, ‘movieid_directorid_df’ was exported to a .csv file for later use in the SQL database table creation.   
 
 
 ![readme16](graphics/readme16.png)
@@ -140,9 +140,9 @@ Creating a new dataframe called ‘movie_director’ allowed us to associate a l
 ![readme17](graphics/readme17.png)
 
 
-To link our ‘directors’ table to our ‘movies’ table in the eventual SQL database, we needed to build a table containing ‘director_id’ and ‘movie_id’. Again, we looked at the credits datafile for ‘movie_id’ and ‘crew’. Like in the previous step, we used iterrows(): to isolate ‘crew’ and ‘movie_id’ and identify instances where ‘job’ equals “Director” using .get(), so that we could append all (director) ‘id’ values to an empty list called ‘director_ids’.  We then used this list to create the ‘movie_director’ data frame to pair ‘movie_id’s with associated ‘director_id’s.    
+Linking the ‘directors’ table to the ‘movies’ table in the eventual SQL database required building a table containing ‘director_id’ and ‘movie_id’. With the credits datafile containing ‘movie_id’ and ‘crew’, the iterrows(): method isolated ‘crew’ and ‘movie_id.’ The .get() method identified instances where ‘job’ equals “Director,” making it possible to append all (director) ‘id’ values to an empty list called ‘director_ids’. This list was then used to create the ‘movie_director’ data frame to pair ‘movie_id’s with associated ‘director_id’s.    
 
-Again, we concatenated an initialized data frame ‘movieid_directorid_df’ with the ‘movie_director’ data frame before converting ‘movie_id’s and ‘director_id’s to integers with astype(int). Finally, we exported ‘movieid_directorid_df’ to a .csv file.   
+An initialized data frame ‘movieid_directorid_df’ was concatenated with the ‘movie_director’ data frame before converting ‘movie_id’s and ‘director_id’s to integers with astype(int). Next, ‘movieid_directorid_df’ was exported as a .csv file.   
 
 
 ![readme18](graphics/readme18.png)
