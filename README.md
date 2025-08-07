@@ -74,7 +74,7 @@ We filtered this second file for the cast and crew corresponding to only the Eng
 
 ![readme03](graphics/readme03.png)
 
-![readme04]((graphics/readme04.png)
+![readme04](graphics/readme04.png)
 
 ## Transform Phase Goals  
 The goal of the transform phase was to parse the imported data in ways that would allow us to create a series of data frames we’d export as .csv files to import into the tables of our SQL database. We will be using a SQL database as there are many items for each film that contain multiple entries such as genre and actor. The schema below indicates the relationships we’d establish between our nine tables.   
