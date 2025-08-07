@@ -69,16 +69,12 @@ Next, we read in the tmdb_5000_credits.csv containing information about each fil
 We filtered this second file for the cast and crew corresponding to only the English-language films that we kept from the first file.  
 
 ![readme01](graphics/readme01.png)
-![readme01](https://github.com/mcjauregui/project3_group4_moviedatabase/assets/151464511/73592892-f012-420d-80d0-cd059eebd882)
 
+![readme02](graphics/readme02.png)
 
-![readme02](https://github.com/mcjauregui/project3_group4_moviedatabase/assets/151464511/af41aa73-9de2-4a31-b6a2-49165c88c06e)
+![readme03](graphics/readme03.png)
 
-
-![readme03](https://github.com/mcjauregui/project3_group4_moviedatabase/assets/151464511/4a50e244-6507-4e5e-963e-04a4886808f5)
-
-
-![readme04](https://github.com/mcjauregui/project3_group4_moviedatabase/assets/151464511/48f723de-0eab-44a7-922e-49bd39f40f8c)
+![readme04]((graphics/readme04.png)
 
 ## Transform Phase Goals  
 The goal of the transform phase was to parse the imported data in ways that would allow us to create a series of data frames we’d export as .csv files to import into the tables of our SQL database. We will be using a SQL database as there are many items for each film that contain multiple entries such as genre and actor. The schema below indicates the relationships we’d establish between our nine tables.   
