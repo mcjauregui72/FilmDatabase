@@ -11,7 +11,7 @@
 > - itertools  
 > - emoji  
 >
-> Pyodbc also requires installing a psqlodbc_16_00_0000-x64 driver which can be found in this repository, under the Resources folder. Alternatively, psqlodbc_16_00_0000-x64.zip can be downloaded directly from [PostgreSQL ODBC Driver Download Page](https://www.postgresql.org/ftp/odbc/versions.old/msi/). After installing the driver, double click on the installer (the .msi or .exe file) and follow the prompts. Verify installation by reopening ODBC Data Sources (64-bit) via the Start menu. Go to the Drivers tab to confirm that PostgreSQL unicode(x64) is now visible. 
+> Pyodbc also requires installing a psqlodbc_16_00_0000-x64 driver which can be found in this repository, under the Resources folder. Alternatively, psqlodbc_16_00_0000-x64.zip can be downloaded directly from [PostgreSQL ODBC Driver Download Page](https://www.postgresql.org/ftp/odbc/versions.old/msi/). After installing the driver, double click on the installer (the .msi or .exe file) and follow the prompts. Verify installation by reopening ODBC Data Sources (64-bit) via the Start menu. Go to the Drivers tab to confirm that PostgreSQL Unicode(x64) is now visible. 
 
 
 ## Project Goal - Film Recommendation Engine
