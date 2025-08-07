@@ -79,8 +79,7 @@ We filtered this second file for the cast and crew corresponding to only the Eng
 ## Transform Phase Goals  
 The goal of the transform phase was to parse the imported data in ways that would allow us to create a series of data frames we’d export as .csv files to import into the tables of our SQL database. We will be using a SQL database as there are many items for each film that contain multiple entries such as genre and actor. The schema below indicates the relationships we’d establish between our nine tables.   
 
-
-![QuickDBD_Project3](https://github.com/mcjauregui/project3_group4_moviedatabase/assets/151464511/7aa6a347-6ec9-443f-8217-5a0ee397a617)
+![QuickDBD_Project3](graphics/QuickDBD_Project3.png)
 
 The first data frame we created was the ‘genres_df’ data frame. First, we defined ‘ids_names’ as an empty set for the genre ids and names found in The Movie Database. We filled this set list by looping through the ‘genres’ column of the ‘en_movies’ data frame (English-language films), isolating ‘id’ and ‘name’ from each row. We used the json.loads(row) method to parse the JSON string of ’id’ and ‘name’ data into a Python dictionary. This enabled us to access the data as key-value pairs, with ‘id’ and ‘name’ containing the genre id and the genre name.  Next, we converted the IDs from strings to integers.
 
