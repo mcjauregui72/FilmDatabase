@@ -86,20 +86,15 @@ The first data frame we created was the ‘genres_df’ data frame. First, we de
 To add in the emojis for each ‘genre’ value, we defined our own dictionary of emojis, ‘emoji_dict’.
 From the items in the ‘emoji_dic’ we created an ‘emoji_df’ dataframe that also included the genres’ ‘alias’. By doing a left merge on ‘emoji_genres’ and ‘emoji_df’ on the column ‘genre’, we populated the ‘emoji_genres’ dataframe. Then we used list comprehension to apply the emoji.emojize() function to each emoji alias value and generate the emoji character from the alias language. Finally, we exported the ‘emoji_genres’ dataframe as a .csv file called 'emoji_genres.csv'
 
+![readme05](graphics/readme05.png)
 
-![readme05](https://github.com/mcjauregui/project3_group4_moviedatabase/assets/151464511/3acbee7f-5901-4e54-b26a-7cd289bf1d99)
+![readme06](graphics/readme06.png)
 
+![readme07](graphics/readme07.png)
 
-![readme06](https://github.com/mcjauregui/project3_group4_moviedatabase/assets/151464511/ec32ffa7-4309-47eb-9393-2d1d57da53fe)
+![readme08](graphics/readme08.png)
 
-
-![readme07](https://github.com/mcjauregui/project3_group4_moviedatabase/assets/151464511/82c827ca-7e71-4084-a301-1e00f58c9be7)
-
-
-![readme08](https://github.com/mcjauregui/project3_group4_moviedatabase/assets/151464511/646517b8-e049-4da2-b036-0ef46bb8903b)
-
-
-![readme09](https://github.com/mcjauregui/project3_group4_moviedatabase/assets/151464511/616ab412-e334-4d91-8150-82ab893f02bb)
+![readme09](graphics/readme09.png)
 
 When it came to creating a data frame .csv file for the ‘actors’, we restricted our consideration of characters (actors) to only the first five listed per film. We filtered the ‘credits’ data frame for the first five cast members present per movie within the ‘cast’ field.  Along with each uniquely-identified movie_id, we saved each ‘cast’ dictionary (‘cast_id’ and ‘character’) embedded within the ‘cast’ field of the credits dataframe. The result was a data frame containing five instances of the movie_id, one for each of the first five cast members credited in the film. 
 
