@@ -181,13 +181,13 @@ The goal of the Load Phase was to successfully import all 9 .csv files, create t
 
 We used the following query to create the tables we’d designed for the SQL database. 
 
--- Exported from QuickDBD: https://www.quickdatabasediagrams.com/
--- Link to schema: https://app.quickdatabasediagrams.com/#/d/Hftcv0
--- NOTE! If you have used non-SQL datatypes in your design, you will have to change these here.
+-- Exported from QuickDBD: https://www.quickdatabasediagrams.com/  
+-- Link to schema: https://app.quickdatabasediagrams.com/#/d/Hftcv0  
+-- NOTE! If you have used non-SQL datatypes in your design, you will have to change these here.  
 
--- Exported from QuickDBD: https://www.quickdatabasediagrams.com/
--- Link to schema: https://app.quickdatabasediagrams.com/
--- NOTE! If you have used non-SQL datatypes in your design, you will have to change these here.
+-- Exported from QuickDBD: https://www.quickdatabasediagrams.com/  
+-- Link to schema: https://app.quickdatabasediagrams.com/  
+-- NOTE! If you have used non-SQL datatypes in your design, you will have to change these here.  
 
 CREATE TABLE "movies" (
     "movie_id" int   NOT NULL,
