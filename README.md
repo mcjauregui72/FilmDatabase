@@ -106,7 +106,7 @@ By using a for loop and and several if statements, we iterated through the cast 
 
 We next created separate lists for ‘actor_id’ and ‘actor_name’ and created the ‘five_df’ data frame to hold ‘movie_id’, ‘actor_id’, and ‘actor_name’. Then we concatenated the data frame to contain the ‘actor_id’ as transformed from string to integer, the ‘movie_id’, and the actor ‘name’ as a new data frame called ‘credits_actor_name’.  
 
-![readme12](graphics/readme12.png)
+![readme10](graphics/readme10.png)
 
 ![readme11](graphics/readme11.png)
 
