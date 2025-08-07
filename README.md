@@ -11,7 +11,7 @@
 > - itertools  
 > - emoji  
 >
-> Pyodbc also requires installing a psqlodbc_16_00_0000-x64 driver which can be found in this repository, under the Resources folder. Alternatively, psqlodbc_16_00_0000-x64.zip can be downloaded directly from [PostgreSQL ODBC Driver Download Page] (https://www.postgresql.org/ftp/odbc/versions.old/msi/).
+> Pyodbc also requires installing a psqlodbc_16_00_0000-x64 driver which can be found in this repository, under the Resources folder. Alternatively, psqlodbc_16_00_0000-x64.zip can be downloaded directly from [PostgreSQL ODBC Driver Download Page](https://www.postgresql.org/ftp/odbc/versions.old/msi/).
 
 2. Install the driver
 After downloading the .zip, right-click it → Extract All.
