@@ -107,10 +107,8 @@ By using a for loop and and several if statements, we iterated through the cast 
 We next created separate lists for ‘actor_id’ and ‘actor_name’ and created the ‘five_df’ data frame to hold ‘movie_id’, ‘actor_id’, and ‘actor_name’. Then we concatenated the data frame to contain the ‘actor_id’ as transformed from string to integer, the ‘movie_id’, and the actor ‘name’ as a new data frame called ‘credits_actor_name’.  
 
 ![readme12](graphics/readme12.png)
-![readme12](https://github.com/mcjauregui/project3_group4_moviedatabase/assets/151464511/61465d29-7c3b-46d1-925f-b510e79dab1b)
 
 ![readme11](graphics/readme11.png)
-![readme11](https://github.com/mcjauregui/project3_group4_moviedatabase/assets/151464511/85f31f3f-ba75-4262-9a5d-2d37e94941a2)
 
 
 ![readme12](https://github.com/mcjauregui/project3_group4_moviedatabase/assets/151464511/275a08be-8ba3-4a58-bc96-0108aff6d023)
