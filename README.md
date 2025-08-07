@@ -1,4 +1,4 @@
-# Film Database ETL Project
+# Film Recommendation Database & ETL Project
 
 >This project uses SQL Python Connector to allow users to query from the SQL database in Python.
 >
