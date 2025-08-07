@@ -80,7 +80,7 @@ The goal of the transform phase was to parse the imported data in ways that woul
 
 ![QuickDBD_Project3](graphics/QuickDBD_Project3.png)
 
-The first data frame created was the ‘genres_df’ data frame. First, ‘ids_names’ were defined as an empty set for the genre ids and names found in The Movie Database. This set liwas filled by looping through the ‘genres’ column of the ‘en_movies’ data frame (English-language films), and isolating ‘id’ and ‘name’ from each row. The json.loads(row) method was used to parse the JSON string of ’id’ and ‘name’ data into a Python dictionary. This afforded access to the data as key-value pairs, with ‘id’ and ‘name’ containing the film genre id and film genre name. Next IDs were converted from strings to integers.
+The first data frame created was the ‘genres_df’ data frame. First, ‘ids_names’ were defined as an empty set for the genre ids and names found in The Movie Database. This set was filled by looping through the ‘genres’ column of the ‘en_movies’ data frame (English-language films), and isolating ‘id’ and ‘name’ from each row. The json.loads(row) method was used to parse the JSON string of ’id’ and ‘name’ data into a Python dictionary. This afforded access to the data as key-value pairs, with ‘id’ and ‘name’ containing the film genre id and film genre name. Next IDs were converted from strings to integers.
 
 Adding in the emojis for each ‘genre’ value required defining a dictionary of emojis, ‘emoji_dict’.
 From the items in ‘emoji_dict’, an ‘emoji_df’ dataframe was created to also included the genres’ ‘alias’. A left merge on ‘emoji_genres’ and ‘emoji_df’ on the column ‘genre allowed for populating the ‘emoji_genres’ dataframe. isLt comprehension was performed to apply the emoji.emojize() function to each emoji alias value and generate the emoji character from the alias language. Finally, the ‘emoji_genres’ dataframe was exported as a .csv file called 'emoji_genres.csv'
@@ -99,11 +99,11 @@ To create a data frame from the .csv file for the ‘actors’, consideration of
 
 The example below shows a test for the first five actor ids and names associated with the movie Avatar, the first film in the ‘credits’ dataframe. The subsequent screenshots illustrate how thi process was performed on the entire dataset.   
 
-The itterows method in pandas was used to iterate over the rows of the ‘cast’ data frame. The purpose was to split out the actor names from each movie title into a list. A similar process isolated the ‘movie_id’ values. An empty set and empty list were initialized to capture the unique actor ids (as any actor could appear multiple times in the data set for being in multiple movies).   
+The itterows method in pandas iterated over the rows of the ‘cast’ data frame, to split out actor names from each movie title into a list. A similar process isolated the ‘movie_id’ values. An empty set and empty list were initialized to capture the unique actor ids (as any actor could appear multiple times in the data set for being in multiple movies).   
 
 A for loop and and several if statements iterated through the cast data to get only one instance of each actor name and actor id appearing in the data set. The loop was defined to stop working once the number of unique actors per film reached 5.    
 
-Separate lists were created for ‘actor_id’ and ‘actor_name.’ The ‘five_df’ data frame was built to hold ‘movie_id’, ‘actor_id’, and ‘actor_name.’ A new data frame called 'credits_actors_name' was created by appending the five_df dataframe to the credits_actor_name, which contains all actor-related data for all films in the datasets. 'actor_id' wass transformed from string to integer. 
+Separate lists were created for ‘actor_id’ and ‘actor_name.’ The ‘five_df’ data frame was built to hold ‘movie_id’, ‘actor_id’, and ‘actor_name.’ A new data frame called 'credits_actors_name' was created by appending the five_df dataframe to the credits_actor_name, which contains all actor-related data for all films in the datasets. 'actor_id' was transformed from string to integer. 
 
 
 ![readme10](graphics/readme10.png)
@@ -118,7 +118,7 @@ Creating the ‘credits_actor_df’ data frame by dropping actor ‘name’ from
 
 ![readme13](graphics/readme13.png)
 
-To create an ‘actor’ dataframe, .csv file, and database table of ‘actor_id’ and ‘actor_name’, ‘ids_cast’ was defined as a set to hold unique pairs of ‘actor_id” and actor ’name’. Iterateing through the ‘credits_actor_name’ data frame using the iterrows() method enabled extraction of ‘actor_id’ and actor ‘name’ from the rows and placed them in the ‘ids_cast’ set. Using the itertools.islice() method on the ‘ids_cast’ set made it possible to print out the first 10 ‘actor_id’ and ‘actor_name’ pairs to the terminal.   
+To create an ‘actor’ dataframe, .csv file, and database table of ‘actor_id’ and ‘actor_name’, ‘ids_cast’ was defined as a set to hold unique pairs of ‘actor_id' and actor ’name’. Iterating through the ‘credits_actor_name’ data frame using the iterrows() method enabled extraction of ‘actor_id’ and actor ‘name’ from the rows and placed them in the ‘ids_cast’ set. Using the itertools.islice() method on the ‘ids_cast’ set made it possible to print out the first 10 ‘actor_id’ and ‘actor_name’ pairs to the terminal.   
 
 
 ![readme14](graphics/readme14.png)
@@ -127,11 +127,11 @@ To create an ‘actor’ dataframe, .csv file, and database table of ‘actor_id
 ![readme15](graphics/readme15.png)
 
 
-Identifing each film's director was a matter of first extracting the ‘crew’ and the ‘movie_id’ information from the credits data file and saving it in a data frame called ‘movie_crew’. Next, the .iterrows(); method iterated through ‘movie_crew’ and loaded the data found in the ‘crew’ row as a Python list to ‘data_list’. Similarly, .iterrows() was used to isolate the ‘movie_id’ value from the ‘movie_id’ row.   
+Identifing each film's director was a matter of first extracting the ‘crew’ and the ‘movie_id’ information from the credits data file and saving it in a data frame called ‘movie_crew’. Next, the .iterrows(); method iterated through ‘movie_crew’ and loaded the data found in the ‘crew’ row as a Python list to ‘data_list’. Similarly, .iterrows() isolated the ‘movie_id’ value from the ‘movie_id’ row.   
 
-Within the ‘data_list’, it was necessary to identify crew_members with a ‘job’ value equal to “Director.” This was accomplished by using a for loop on the ‘data_list’. .get() next appended each Director’s ‘id’ to an empty list called ‘director_ids’.   
+Within the ‘data_list’, it was necessary to identify crew_members with a ‘job’ value equal to “Director.” This was accomplished by using a for loop on the ‘data_list’. Next, .get() appended each Director’s ‘id’ to an empty list called ‘director_ids’.   
 
-Creating a new dataframe called ‘movie_director’ allowed for associating a list of ‘movie_id’s their related ‘director_id’s. Because multiple directors can be credited per movie, it became necessary to concatenated empty dataframe ‘movieid_directorid_df with ‘movie_director’ and convert movie and director id fields to integers with .astype(). Finally, ‘movieid_directorid_df’ was exported to a .csv file for later use in the SQL database table creation.   
+Creating a new dataframe called ‘movie_director’ allowed for associating a list of ‘movie_id’s with their related ‘director_id’s. Because multiple directors can be credited per movie, it became necessary to concatenated an empty dataframe ‘movieid_directorid_df with ‘movie_director’ and convert movie and director id fields to integers with .astype(). Finally, ‘movieid_directorid_df’ was exported to a .csv file for later use in the SQL database table creation.   
 
 
 ![readme16](graphics/readme16.png)
@@ -140,7 +140,7 @@ Creating a new dataframe called ‘movie_director’ allowed for associating a l
 ![readme17](graphics/readme17.png)
 
 
-Linking the ‘directors’ table to the ‘movies’ table in the eventual SQL database required building a table containing ‘director_id’ and ‘movie_id’. With the credits datafile containing ‘movie_id’ and ‘crew’, the iterrows(): method isolated ‘crew’ and ‘movie_id.’ The .get() method identified instances where ‘job’ equals “Director,” making it possible to append all (director) ‘id’ values to an empty list called ‘director_ids’. This list was then used to create the ‘movie_director’ data frame to pair ‘movie_id’s with associated ‘director_id’s.    
+Linking the ‘directors’ table to the ‘movies’ table in the eventual SQL database required building a table containing ‘director_id’ and ‘movie_id’. With the credits datafile containing ‘movie_id’ and ‘crew’, the iterrows(): method isolated ‘crew’ and ‘movie_id.’ The .get() method identified instances where ‘job’ equals “Director,” making it possible to append all (director) ‘id’ values to an empty list called ‘director_ids’. This list was used to create the ‘movie_director’ data frame to pair ‘movie_id’s with associated ‘director_id’s.    
 
 An initialized data frame ‘movieid_directorid_df’ was concatenated with the ‘movie_director’ data frame before converting ‘movie_id’s and ‘director_id’s to integers with astype(int). Next, ‘movieid_directorid_df’ was exported as a .csv file.   
 
@@ -149,7 +149,7 @@ An initialized data frame ‘movieid_directorid_df’ was concatenated with the 
 
 To allow users to search for films based on keywords, a 'keywords' field from the 'en_movies' dataset (created from the original 'movies' and 'crew' data files) had to be included in the SQL database. 
 
-The for loop-json.loads() process helped isolate (keyword) ‘id’ and (keyword) ‘name’ from the source data for the ‘ids_keyword’ set defined. Again, the resulting data frame, ‘keywords_df’ was exported as a .csv file for import into the SQL database. 
+The for loop-json.loads() process helped isolate (keyword) ‘id’ and (keyword) ‘name’ from the source data for the defined ‘ids_keyword’ set. Again, the resulting data frame, ‘keywords_df’ was exported as a .csv file for import into the SQL database. 
 
 
 ![readme19](graphics/readme19.png)
@@ -158,7 +158,7 @@ The for loop-json.loads() process helped isolate (keyword) ‘id’ and (keyword
 ![readme20](graphics/readme20.png)
 
 
-A query-by-keywords function for the film recommendation engine required a data frame, .csv file, and a database table linking keywords with movie ids. This link was establiished with a similar process to that used in creating the other linking data frames/.csv files/tables. The script is shown below.
+A query-by-keywords function for the film recommendation engine required a data frame, .csv file, and database table linking keywords with movie ids. This link was established with a similar process used to create the other linking data frames/.csv files/tables. The script is shown below.
 
 
 ![readme21](graphics/readme21.png)
@@ -167,7 +167,7 @@ A query-by-keywords function for the film recommendation engine required a data 
 ![readme22](graphics/readme22.png)
 
 
-The final dataframe-to .csv-to table necessary to create is for ‘movies’. Selected columns from the ‘en_movies’ data set were assigned to a dictionary called ‘data’. A data frame was then made from this dictionary. Within that data frame, all ‘movie_id’ values were converted from string to integer type using .astype(int). ‘release_date’ values were also converted from string to datetime type with the pd.to_datetime method. Null values were assigned to the ‘tagline’ and ‘release_date’ columns that were missing data. Finally, ‘movies_df’ was exported to a .csv file for further use. 
+The final dataframe-to .csv-to table needed was for ‘movies’. Selected columns from the ‘en_movies’ data set were assigned to a dictionary called ‘data’. A data frame was then made from this dictionary. Within that data frame, all ‘movie_id’ values were converted from string to integer type using .astype(int). ‘release_date’ values were also converted from string to datetime type with the pd.to_datetime method. Null values were assigned to the ‘tagline’ and ‘release_date’ columns that were missing data. Finally, ‘movies_df’ was exported to a .csv file for further use. 
 
 
 ![readme23](graphics/readme23.png)
@@ -178,7 +178,7 @@ The final dataframe-to .csv-to table necessary to create is for ‘movies’. Se
 
 ## Load Phase Goals
 
-The goal of the Load Phase was to successfully import all 9 .csv files, create the tables into which the .csv files would be imported, and create the required table joins needed to demonstrate the movie recommendation engine. To create an interactive experience with the SQL database, a simple but easy-to-use user interface was created with SQL Python Connector. It allows users to query from the SQL database in Python.
+The goal of the Load Phase was to successfully import all 9 .csv files, create the tables into which the .csv files would be imported, and create the table joins needed to demonstrate the movie recommendation engine. To create an interactive experience with the SQL database, a simple but easy-to-use user interface was created with SQL Python Connector to allows users to query from the SQL database in Python.
 
 The following queries were used to create the tables designed for the SQL database. 
 
@@ -293,7 +293,6 @@ Files were imported into tables, in this order:
 8. movieid_genre_ids  
 9. movieids_kw 
 
-***Pick Up Editing Here***
 
 ## Running the movie recommendation engine
 Steps to interact with the movie recommendation engine:
@@ -308,13 +307,18 @@ Steps to interact with the movie recommendation engine:
 ![readme27](graphics/readme27.png)
 
 
-Below is a short video showing the finished Movie Recommendation Engine we created:
+The short video shows the finished Movie Recommendation Engine:
 
 https://github.com/mcjauregui72/FilmDatabase/User_Input_Demo.mp4
 
+
 ## Future Improvements
 
-The first main improvement possible for this project is to retrieve data from a live API instead of a Kaggle dataset. Using a paid API key makes it possible to build a more repeatable Python script to periodically query the API and update our SQL database to keep it up to date with new films. Another improvement could be with the movie recommendation engine by building a standalone application that leverages ODBC or another database data retrieval method to give a list of film results in the form of a CSV or visualization tool such as Power BI. However, our team felt that this went beyond the scope of our project and built a Jupyter notebook to take user inputs and use it to run SQL queries. The queries we put together were fairly simple and only took a single entry in a single field for actor, director, genre, or keyword. There is more room for performing multiple queries and to use other film information to query for data.
+The first main improvement possible for this project would be to retrieve data from a live API instead of a Kaggle dataset. Using a paid API key makes it possible to build a more repeatable Python script to periodically query the API and update the SQL database to keep it up to date with new films.   
+  
+Another improvement could be a standalone application that leverages ODBC or another database data retrieval method to give a list of film results in the form of a CSV or visualization tool.   
+  
+Finally, the recommendation engine's user queries are fairly simple. They accept only a single entry for a single field (actor, director, genre, or keyword). There is more room for performing multiple queries and using other film information to make recommendations.
 
 ## Sources:  
 
