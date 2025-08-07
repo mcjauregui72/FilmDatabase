@@ -293,9 +293,6 @@ Import Files into Tables, in this order:
 9. movieids_kw 
 
 
-![readme25](graphics/readme25.png)
-
-
 ## Running the movie recommendation engine
 Steps to interact with the movie recommendation engine:
 1. (If necessary) Go to the Resources folder and locate the psqlodbc_16_00_0000-x64 folder. Within the folder is an installer file called psqlodbc_x64. Run the installer. 
