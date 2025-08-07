@@ -68,7 +68,7 @@ We first read the tmdb_5000_movies.csv file containing information on each film.
 Next, we read in the tmdb_5000_credits.csv containing information about each film’s cast and crew.   
 We filtered this second file for the cast and crew corresponding to only the English-language films that we kept from the first file.  
 
-
+![readme01](graphics/readme01.png)
 ![readme01](https://github.com/mcjauregui/project3_group4_moviedatabase/assets/151464511/73592892-f012-420d-80d0-cd059eebd882)
 
 
