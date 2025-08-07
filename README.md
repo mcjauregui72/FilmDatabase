@@ -147,9 +147,9 @@ An initialized data frame ‘movieid_directorid_df’ was concatenated with the 
 
 ![readme18](graphics/readme18.png)
 
-To allow users of our movie recommendation engine to search for films based on keywords, we decided to include in our SQL database a ‘keywords’ field from the ‘en_movies’ dataset we’d created from the original ‘movies’ and ‘crew’ data files. 
+To allow users to search for films based on keywords, a 'keywords' field from the 'en_movies' dataset (created from the original 'movies' and 'crew' data files) had to be included in the SQL database. 
 
-The for loop-json.loads() process once again helped us isolate (keyword) ‘id’ and (keyword) ‘name’ from the source data and update them to the ‘ids_keyword’ set we defined. Again, we exported the resulting data frame, ‘keywords_df’ to a .csv file for import into our SQL database. 
+The for loop-json.loads() process helped isolate (keyword) ‘id’ and (keyword) ‘name’ from the source data for the ‘ids_keyword’ set defined. Again, the resulting data frame, ‘keywords_df’ was exported as a .csv file for import into the SQL database. 
 
 
 ![readme19](graphics/readme19.png)
@@ -158,7 +158,7 @@ The for loop-json.loads() process once again helped us isolate (keyword) ‘id�
 ![readme20](graphics/readme20.png)
 
 
-With a query-by-keywords function for our movie recommendation engine, we needed a data frame, .csv file, database table that linked keywords with movie ids. We created this link using a similar process we used in creating the other linking data frames/.csv files/tables. The script is shown below.
+A query-by-keywords function for the film recommendation engine required a data frame, .csv file, and a database table linking keywords with movie ids. This link was establiished with a similar process to that used in creating the other linking data frames/.csv files/tables. The script is shown below.
 
 
 ![readme21](graphics/readme21.png)
@@ -167,7 +167,7 @@ With a query-by-keywords function for our movie recommendation engine, we needed
 ![readme22](graphics/readme22.png)
 
 
-The final dataframe-to .csv-to table we needed to create is for ‘movies’. First, we selected the columns we wanted from our ‘en_movies’ data set and assigned them to a dictionary, ‘data’. From the ‘data’ we made a data frame. Within that data frame, we converted all ‘movie_id’ values from string to integer type using .astype(int) and converted ‘release_date’ values from string to datetime type using the pd.to_datetime method. We also assigned null values to the ‘tagline’ and ‘release_date’ columns that were missing data. Finally, we exported ‘movies_df’ to a .csv file for further use. 
+The final dataframe-to .csv-to table necessary to create is for ‘movies’. Selected columns from the ‘en_movies’ data set were assigned to a dictionary called ‘data’. A data frame was then made from this dictionary. Within that data frame, all ‘movie_id’ values were converted from string to integer type using .astype(int). ‘release_date’ values were also converted from string to datetime type with the pd.to_datetime method. Null values were assigned to the ‘tagline’ and ‘release_date’ columns that were missing data. Finally, ‘movies_df’ was exported to a .csv file for further use. 
 
 
 ![readme23](graphics/readme23.png)
@@ -178,9 +178,9 @@ The final dataframe-to .csv-to table we needed to create is for ‘movies’. Fi
 
 ## Load Phase Goals
 
-The goal of the Load Phase was to successfully import all 9 .csv files, create the tables into which we'd import the .csv files, and create the required table joins needed to demonstrate the movie recommendation engine. To create an interactive experience with the SQL database, the team also produced a simple but easy-to-use user interface with SQL Python Connector. This allows users to query from the SQL database in Python.
+The goal of the Load Phase was to successfully import all 9 .csv files, create the tables into which the .csv files would be imported, and create the required table joins needed to demonstrate the movie recommendation engine. To create an interactive experience with the SQL database, a simple but easy-to-use user interface was created with SQL Python Connector. It allows users to query from the SQL database in Python.
 
-We used the following query to create the tables we’d designed for the SQL database. 
+The following queries were used to create the tables designed for the SQL database. 
 
 -- Exported from QuickDBD: https://www.quickdatabasediagrams.com/  
 -- Link to schema: https://app.quickdatabasediagrams.com/#/d/Hftcv0  
@@ -282,7 +282,7 @@ REFERENCES "movies" ("movie_id");
 ALTER TABLE "movieids_kw" ADD CONSTRAINT "fk_movieids_kw_keyword_id" FOREIGN KEY("keyword_id")
 REFERENCES "keywords" ("keyword_id");
 
-Import Files into Tables, in this order:
+Files were imported into tables, in this order:
 1. actor  
 2. directors  
 3. emoji_genre  
@@ -293,6 +293,7 @@ Import Files into Tables, in this order:
 8. movieid_genre_ids  
 9. movieids_kw 
 
+***Pick Up Editing Here***
 
 ## Running the movie recommendation engine
 Steps to interact with the movie recommendation engine:
